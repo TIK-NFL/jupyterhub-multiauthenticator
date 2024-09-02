@@ -46,6 +46,12 @@ class URLScopeMixin:
     def logout_url(self, base_url):
         return super().logout_url(url_path_join(base_url, self.url_scope))
 
+    def callback_url(self, base_url):
+        return super().callback_url(url_path_join(base_url, self.url_scope))
+
+    def config_json_url(self, base_url):
+        return super().config_json_url(url_path_join(base_url, self.url_scope))
+
     def get_handlers(self, app):
         handlers = super().get_handlers(app)
         return [
