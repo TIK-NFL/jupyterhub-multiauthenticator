@@ -140,6 +140,8 @@ class MultiAuthenticator(Authenticator):
 
         html = []
         for authenticator in self._authenticators:
+            if hasattr(authenticator, 'ui_login') and not authenticator.ui_login:
+                continue
             if hasattr(authenticator, "service_name"):
                 login_service = getattr(authenticator, "service_name")
             else:
