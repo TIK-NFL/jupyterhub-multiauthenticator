@@ -87,8 +87,9 @@ class MultiAuthenticator(Authenticator):
 
                 @property
                 def username_prefix(self):
-                    prefix = f"{getattr(self, 'service_name', self.login_service)}{PREFIX_SEPARATOR}"
-                    return self.normalize_username(prefix)
+                    # No username prefix, since multiple authenticators of the same type are used.
+                    # Uniqueness is provided by the username.
+                    return ""
 
                 async def authenticate(self, handler, data=None, **kwargs):
                     response = await super().authenticate(handler, data, **kwargs)
